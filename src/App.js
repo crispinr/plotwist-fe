@@ -3,6 +3,7 @@ import { BrowserRouter as Router,
          Route,
         } from "react-router-dom";
 import "./assets/scss/style.scss";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Landing from "./pages/Landing";
 import Feed from "./pages/Feed";
 import Login from "./pages/Login";
