@@ -1,7 +1,4 @@
-import { BrowserRouter as Router, 
-         Routes, 
-         Route,
-        } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./assets/scss/style.scss";
 import Landing from "./pages/Landing";
 import Feed from "./pages/Feed";
@@ -14,16 +11,15 @@ export default function App() {
   return (
     <>
       <Router>
-          <Routes>
-          <Route path="/" element={<Landing/>}/>
-          <Route path="/feed" element={<Feed/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/post" element={<Post/>}/>
-          <Route path="/profile" element={<Profile/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/feed" element={<Feed />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/post" element={<Post />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
       </Router>
     </>
   );
 }
-
