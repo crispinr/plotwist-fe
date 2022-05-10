@@ -1,5 +1,8 @@
 import { useState } from "react";
 import ReactJsAlert from "reactjs-alert";
+
+import { useNavigate } from "react-router-dom";
+
 import { account } from "../services/appwriteConfig";
 import UnstyledButtonCustom from "../components/UnstyledButtonCustom";
 import { Grid, Typography, TextField, Button, Box } from "@mui/material";
@@ -12,45 +15,53 @@ export default function Signup() {
     password: "",
   });
 
+    const [status, setStatus] = useState(false);
+    const [type, setType] = useState("");
+    const [title, setTitle] = useState("");
 
-  const [status, setStatus] = useState(false);
-  const [type, setType] = useState("");
-  const [title, setTitle] = useState("");
+    const navigate = useNavigate();
 
-  const signupUser = async (e) => {
-    e.preventDefault();
-    console.log(userDetails);
-    try {
-      const newUser = await account.create(
-        "unique()",
-        userDetails.email,
-        userDetails.password,
-        userDetails.name
-      );
-      console.log(newUser);
+    const signupUser = async(e) => {
+        e.preventDefault();
+        console.log(userDetails);
+        try{
 
-      setUserDetails({
-        name: "",
-        email: "",
-        password: "",
-      });
-      setStatus(true);
-      setType("success");
-      setTitle("User created");
-    } catch (err) {
-      console.log(err.message);
+            const newUser = await account.create(
+                "unique()",
+                userDetails.email, 
+                userDetails.password, 
+                userDetails.name,
+            );
+            console.log(newUser);
 
-      setUserDetails({
-        name: "",
-        email: "",
-        password: "",
-      });
+            setUserDetails({
+                name:"",
+                email:"",
+                password:""
+            });
+            setStatus(true);
+            setType("success");
+            setTitle("User created");
 
-      setStatus(true);
-      setType("error");
-      setTitle(err.message);
+            navigate('/login');
+            
+        }
+        catch(err){
+            console.log(err.message);
+
+            setUserDetails({
+                name:"",
+                email:"",
+                password:""
+            });
+
+            setStatus(true);
+            setType("error");
+            setTitle(err.message);
+        }
     }
-  };
+
+    
 
   return (
     <>
@@ -60,6 +71,8 @@ export default function Signup() {
         title={title}
         Close={() => setStatus(false)}
       />
+      <div className="auth-wrapper">
+      
       <Box
         display="flex"
         justifyContent="center"
@@ -137,13 +150,17 @@ export default function Signup() {
           </Grid>
 
           <Grid marginTop="30px">
+          <div class="col-md-12 text-center">
             <Button onClick={(e) => signupUser(e)}>
               {" "}
               <UnstyledButtonCustom value="SignUp" />
             </Button>
+            </div>
           </Grid>
         </Grid>
       </Box>
+      </div>
+      
     </>
   );
 }
