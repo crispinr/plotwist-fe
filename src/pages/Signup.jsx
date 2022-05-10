@@ -1,5 +1,8 @@
 import { useState } from "react";
 import ReactJsAlert from "reactjs-alert";
+
+import { useNavigate } from "react-router-dom";
+
 import { account } from "../services/appwriteConfig";
 import UnstyledButtonCustom from "../components/UnstyledButtonCustom";
 import { Grid, Typography, TextField, Button, Box } from "@mui/material";
@@ -11,44 +14,53 @@ export default function Signup() {
     password: "",
   });
 
-  const [status, setStatus] = useState(false);
-  const [type, setType] = useState("");
-  const [title, setTitle] = useState("");
+    const [status, setStatus] = useState(false);
+    const [type, setType] = useState("");
+    const [title, setTitle] = useState("");
 
-  const signupUser = async (e) => {
-    e.preventDefault();
-    console.log(userDetails);
-    try {
-      const newUser = await account.create(
-        "unique()",
-        userDetails.email,
-        userDetails.password,
-        userDetails.name
-      );
-      console.log(newUser);
+    const navigate = useNavigate();
 
-      setUserDetails({
-        name: "",
-        email: "",
-        password: "",
-      });
-      setStatus(true);
-      setType("success");
-      setTitle("User created");
-    } catch (err) {
-      console.log(err.message);
+    const signupUser = async(e) => {
+        e.preventDefault();
+        console.log(userDetails);
+        try{
 
-      setUserDetails({
-        name: "",
-        email: "",
-        password: "",
-      });
+            const newUser = await account.create(
+                "unique()",
+                userDetails.email, 
+                userDetails.password, 
+                userDetails.name,
+            );
+            console.log(newUser);
 
-      setStatus(true);
-      setType("error");
-      setTitle(err.message);
+            setUserDetails({
+                name:"",
+                email:"",
+                password:""
+            });
+            setStatus(true);
+            setType("success");
+            setTitle("User created");
+
+            navigate('/login');
+            
+        }
+        catch(err){
+            console.log(err.message);
+
+            setUserDetails({
+                name:"",
+                email:"",
+                password:""
+            });
+
+            setStatus(true);
+            setType("error");
+            setTitle(err.message);
+        }
     }
-  };
+
+    
 
   return (
     <>
