@@ -17,13 +17,19 @@ export default function Signup(){
         console.log(userDetails);
         try{
 
-        const newUser = await account.create(
-            "unique()",
-            userDetails.email, 
-            userDetails.password, 
-            userDetails.name,
-        );
+            const newUser = await account.create(
+                "unique()",
+                userDetails.email, 
+                userDetails.password, 
+                userDetails.name,
+            );
             console.log(newUser);
+
+            setUserDetails({
+                name:"",
+                email:"",
+                password:""
+            })
             
         }
         catch(err){
