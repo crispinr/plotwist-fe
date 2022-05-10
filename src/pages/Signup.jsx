@@ -4,6 +4,8 @@ import { useState } from "react";
 import  "../assets/scss/style.scss";
 import UnstyledButtonCustom from "../components/UnstyledButtonCustom";
 import { account } from "../services/appwriteConfig";
+import ReactJsAlert from "reactjs-alert";
+
 export default function Signup(){
 
     const [userDetails, setUserDetails] = useState({
@@ -11,6 +13,10 @@ export default function Signup(){
         email: "",
         password: ""
     });
+
+    const [status, setStatus] = useState(false);
+    const [type, setType] = useState("");
+    const [title, setTitle] = useState("");
 
     const signupUser = async(e) => {
         e.preventDefault();
@@ -29,17 +35,30 @@ export default function Signup(){
                 name:"",
                 email:"",
                 password:""
-            })
+            });
+            setStatus(true);
+            setType("success");
+            setTitle("User created");
             
         }
         catch(err){
             console.log(err.message);
+
+            setStatus(true);
+            setType("error");
+            setTitle(err.message);
         }
 
     }
 
     return (
         <>
+        <ReactJsAlert
+            status={status} // true or false
+            type={type} // success, warning, error, info
+            title={title}
+            Close={() => setStatus(false)}
+        />
         <Box
             display="flex"
             justifyContent="center"
