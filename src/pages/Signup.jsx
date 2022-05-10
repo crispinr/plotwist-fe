@@ -4,12 +4,14 @@ import { account } from "../services/appwriteConfig";
 import UnstyledButtonCustom from "../components/UnstyledButtonCustom";
 import { Grid, Typography, TextField, Button, Box } from "@mui/material";
 
+
 export default function Signup() {
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
     password: "",
   });
+
 
   const [status, setStatus] = useState(false);
   const [type, setType] = useState("");
@@ -63,12 +65,16 @@ export default function Signup() {
         justifyContent="center"
         alignItems="center"
         minHeight="100vh"
+        backgroundColor= "#1c223a"
+        color="#FFFFFF"
+
       >
         <Grid
           container
           direction="column"
           justify="space-between"
           alignItems="center"
+          
         >
           <Grid marginTop="30px">
             <Typography variant="h4">Welcome to Plotwist Community!</Typography>
@@ -76,8 +82,9 @@ export default function Signup() {
 
           <Grid marginTop="30px">
             <Typography variant="h5">Name</Typography>
-            <TextField
-              fontSize="20px"
+            <TextField 
+            
+              fontSize="20px"            
               onChange={(e) => {
                 setUserDetails({
                   ...userDetails,
@@ -94,6 +101,7 @@ export default function Signup() {
           <Grid marginTop="30px">
             <Typography variant="h5">Email</Typography>
             <TextField
+            borderColor="#FFFFFF"
               fontSize="30px"
               onChange={(e) => {
                 setUserDetails({
