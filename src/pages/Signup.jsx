@@ -1,5 +1,5 @@
 
-import { Grid, Typography, TextField, Button } from "@mui/material";
+import { Grid, Typography, TextField, Button, Box } from "@mui/material";
 import { useState } from "react";
 import  "../assets/scss/style.scss";
 import UnstyledButtonCustom from "../components/UnstyledButtonCustom";
@@ -15,7 +15,6 @@ export default function Signup(){
     const signupUser = async(e) => {
         e.preventDefault();
         console.log(userDetails);
-
         try{
 
         const newUser = await account.create(
@@ -25,11 +24,7 @@ export default function Signup(){
             userDetails.name,
         );
             console.log(newUser);
-            setUserDetails({
-                name: "",
-                email: "",
-                password: ""
-            })
+            
         }
         catch(err){
             console.log(err.message);
@@ -39,10 +34,16 @@ export default function Signup(){
 
     return (
         <>
+        <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="100vh"
+        >
             <Grid 
                 container
                 direction="column"
-                justifyContent="space-between"
+                justify="space-between"
                 alignItems="center"
             >
                 <Grid marginTop="30px">
@@ -51,7 +52,7 @@ export default function Signup(){
 
 
                 <Grid marginTop="30px">
-                    <Typography variant="h5">Username</Typography>
+                    <Typography variant="h5">Name</Typography>
                     <TextField 
                         onChange={(e)=>{
                             setUserDetails({
@@ -59,7 +60,8 @@ export default function Signup(){
                                 name: e.target.value
                             })
                         }}  
-                        id="standard-basic"  
+                        value={userDetails.name}
+                        id="username"  
                         variant="standard" />
                 </Grid>
 
@@ -73,7 +75,8 @@ export default function Signup(){
                             })
                         }}
                         className="textfield"
-                        id="standard-basic"  
+                        id="email"  
+                        value={userDetails.email}
                         variant="standard" 
                         fullWidth
                     />
@@ -89,7 +92,8 @@ export default function Signup(){
                                 password: e.target.value
                             })
                         }}
-                        id="standard-basic"  
+                        value={userDetails.password}
+                        id="password"  
                         variant="standard"
                      />
                 </Grid>
@@ -100,6 +104,8 @@ export default function Signup(){
 
             </Grid>
 
+        </Box>
+    
         </>
     );
 }
