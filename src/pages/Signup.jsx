@@ -44,6 +44,12 @@ export default function Signup(){
         catch(err){
             console.log(err.message);
 
+            setUserDetails({
+                name:"",
+                email:"",
+                password:""
+            });
+
             setStatus(true);
             setType("error");
             setTitle(err.message);
@@ -54,8 +60,8 @@ export default function Signup(){
     return (
         <>
         <ReactJsAlert
-            status={status} // true or false
-            type={type} // success, warning, error, info
+            status={status} 
+            type={type} 
             title={title}
             Close={() => setStatus(false)}
         />
@@ -79,6 +85,7 @@ export default function Signup(){
                 <Grid marginTop="30px">
                     <Typography variant="h5">Name</Typography>
                     <TextField 
+                        fontSize="20px"
                         onChange={(e)=>{
                             setUserDetails({
                                 ...userDetails,
@@ -87,12 +94,15 @@ export default function Signup(){
                         }}  
                         value={userDetails.name}
                         id="username"  
-                        variant="standard" />
+                        variant="standard" 
+                        required
+                    />
                 </Grid>
 
                 <Grid marginTop="30px">
                     <Typography variant="h5">Email</Typography>
                     <TextField 
+                        fontSize="30px"
                         onChange={(e)=>{
                             setUserDetails({
                                 ...userDetails,
@@ -104,12 +114,15 @@ export default function Signup(){
                         value={userDetails.email}
                         variant="standard" 
                         fullWidth
+                        required
+
                     />
                 </Grid>
 
                 <Grid marginTop="30px">
                     <Typography variant="h5">Password</Typography>
                     <TextField 
+                        fontSize="20px"
                         type="password"
                         onChange={(e)=>{
                             setUserDetails({
@@ -120,6 +133,7 @@ export default function Signup(){
                         value={userDetails.password}
                         id="password"  
                         variant="standard"
+                        required
                      />
                 </Grid>
 
