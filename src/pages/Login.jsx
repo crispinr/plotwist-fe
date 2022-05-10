@@ -1,11 +1,49 @@
-import React, { Component } from 'react'
-export default class Login extends Component {
-  render() {
-    return (
+import React, { useState } from 'react'
+import { account } from "../services/appwriteConfig";
+import {useNavigate} from "react-router-dom";
+import ReactJsAlert from "reactjs-alert";
 
-        <div className="App">
-        <div className="auth-wrapper">
-          <div className="auth-inner">
+
+export default function Login()  {
+
+  const [userDetails, setUserDetails] = useState({
+    email: "",
+    password: ""  
+  })
+  const navigate = useNavigate();
+  const [status, setStatus] = useState(false);
+  const [type, setType] = useState("");
+  const [title, setTitle] = useState("");
+
+  const loginUser = async(e)=>{
+    e.preventDefault();
+    console.log(userDetails);
+    try{
+      const loggedUser = await account.createSession(userDetails.email, userDetails.password);
+      console.log(loggedUser);
+      setStatus(true);
+      setType("success");
+      setTitle("Logged in");
+      navigate('/post');
+
+    }catch(err){
+      console.log(err);
+      setStatus(true);
+      setType("error");
+      setTitle("Invalid Password or email");
+    }
+  }
+
+  return (
+    <div className="App">
+      <ReactJsAlert
+            status={status} 
+            type={type} 
+            title={title}
+            Close={() => setStatus(false)}
+        />
+      <div className="auth-wrapper">
+        <div className="auth-inner">
     <form>
         <h3> Welcome to Plotwist Community!</h3>
         <div className="mb-3 ">
@@ -14,6 +52,12 @@ export default class Login extends Component {
             type="email"
             className="form-control"
             placeholder="Enter email"
+            onChange={(e)=>{
+              setUserDetails({
+                  ...userDetails,
+                  email: e.target.value
+              })
+          }}
           />
         </div>
         <div className="mb-3">
@@ -22,6 +66,12 @@ export default class Login extends Component {
             type="password"
             className="form-control"
             placeholder="Enter password"
+            onChange={(e)=>{
+              setUserDetails({
+                  ...userDetails,
+                  password: e.target.value
+              })
+          }}
           />
         </div>
         <div className="mb-3">
@@ -37,7 +87,7 @@ export default class Login extends Component {
           </div>
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+          <button onClick={(e)=>loginUser(e)} type="submit" className="btn btn-primary">
             Log In
           </button>
         </div>
@@ -49,5 +99,5 @@ export default class Login extends Component {
         </div>
       </div>
     )
-  }
+  
 }

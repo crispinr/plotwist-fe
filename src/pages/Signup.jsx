@@ -5,6 +5,7 @@ import  "../assets/scss/style.scss";
 import UnstyledButtonCustom from "../components/UnstyledButtonCustom";
 import { account } from "../services/appwriteConfig";
 import ReactJsAlert from "reactjs-alert";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup(){
 
@@ -17,6 +18,8 @@ export default function Signup(){
     const [status, setStatus] = useState(false);
     const [type, setType] = useState("");
     const [title, setTitle] = useState("");
+
+    const navigate = useNavigate();
 
     const signupUser = async(e) => {
         e.preventDefault();
@@ -39,6 +42,8 @@ export default function Signup(){
             setStatus(true);
             setType("success");
             setTitle("User created");
+
+            navigate('/login');
             
         }
         catch(err){
