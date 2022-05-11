@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from 'react'
-=======
 import React, { useState } from "react";
->>>>>>> dd42d737b5cf26217db01d91215d684b97a77b27
 import { account } from "../services/appwriteConfig";
 import { useNavigate } from "react-router-dom";
 import ReactJsAlert from "reactjs-alert";
@@ -31,7 +27,7 @@ export default function Login() {
       setStatus(true);
       setType("success");
       setTitle("Logged in");
-      navigate("/post");
+      navigate("/feed");
     } catch (err) {
       console.log(err);
       setStatus(true);
@@ -120,8 +116,4 @@ export default function Login() {
       </div>
     </>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> dd42d737b5cf26217db01d91215d684b97a77b27
