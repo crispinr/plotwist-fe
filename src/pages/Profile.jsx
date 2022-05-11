@@ -1,3 +1,7 @@
+import BaseLayout from "../components/BaseLayout";
+
 export default function Profile(){
-    return <div>Profile</div>;
+    return(
+        <BaseLayout />
+    )
 }

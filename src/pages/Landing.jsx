@@ -34,17 +34,7 @@ export default function Landing() {
     </Navbar.Collapse>
   </Container>
 </Navbar>
-  <Container fluid expand="lg">
-    <section className="land">
-      <div className="d-flex">
-        <div className="col">
-hiii
-        </div>
-        <div className="col">
-helooo
-        </div>
-      </div>
-    </section>
+  <Container>
   </Container>
     </>
   );

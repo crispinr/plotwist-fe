@@ -1,3 +1,7 @@
+import BaseLayout from "../components/BaseLayout";
+
 export default function Post(){
-    return <div>Post</div>;
+    return (
+        <BaseLayout />
+    )
 }
