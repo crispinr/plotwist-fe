@@ -28,7 +28,7 @@ export default function Header (){
         style={{ maxHeight: '100px' }}
         navbarScroll
       >
-        <Nav.Link className="me-3" href="/post"><span className="txt">+</span></Nav.Link>
+        <Nav.Link className="me-3" href="/post"><span className="txt">+ POST</span></Nav.Link>
         <Nav.Link className="me-3" href="/feed"><span className="txt">FEED</span></Nav.Link>
         <Nav.Link className="me-3" href="/profile"><span className="txt">PROFILE</span></Nav.Link>
       </Nav>

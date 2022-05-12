@@ -3,9 +3,9 @@ export default function Footer (){
     const currentYear = date.getFullYear();
     return(
         <>
-        <section className="foot">
+        <section className="mb-0 fixed-bottom foot">
         <div className="px-5">
-          <div className="" style={{ height: "30px" }}>
+          <div className="">
           <div className="text-center text-muted d-flex flex-column flex-md-row  justify-content-between align-items-center my-3 mx-md-3  ml-md-4 ml-lg-0">
           <p className="mx-auto txt">
             © {currentYear} License Reserved
