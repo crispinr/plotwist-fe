@@ -1,5 +1,5 @@
 import React from "react";
-import plot from "../components/images/plot.png";
+import plotwist from "../assets/images/plotwistLogo.png";
 import { Navbar, Nav, Form, FormControl } from "react-bootstrap";
 
 export default function Header() {
@@ -9,7 +9,7 @@ export default function Header() {
         <Navbar expand="lg">
           <Navbar.Brand className="ms-4" href="/feed">
             <a>
-              <img src={plot} style={{ height: "33px" }} />
+              <img src={plotwist} style={{ height: "33px" }} />
             </a>
             <span className="txt" style={{ height: "40px" }}>
               PLOTWIST

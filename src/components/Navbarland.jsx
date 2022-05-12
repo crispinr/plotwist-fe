@@ -1,5 +1,5 @@
 import React from "react";
-import plot from "../components/images/plot.png";
+import plotwist from "../assets/images/plotwistLogo.png";
 import { Nav, Navbar, Container, Form, FormControl } from "react-bootstrap";
 
 export default function Navbarland() {
@@ -10,7 +10,7 @@ export default function Navbarland() {
           <Container fluid>
             <Navbar.Brand className="d-flex ms-4" href="/">
               <a>
-                <img src={plot} style={{ height: "33px" }} />
+                <img src={plotwist} style={{ height: "33px" }} />
               </a>
               <span
                 className="txt align-self-center"
