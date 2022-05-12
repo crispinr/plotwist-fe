@@ -1,13 +1,11 @@
-import BaseLayout from "../components/BaseLayout"
+import BaseLayout from "../components/BaseLayout";
 
-export default function Feed(){
-    return (
-        <>
-        <BaseLayout>
-        <section>
-            feed
-        </section>
-        </BaseLayout>
-        </>
-    )
+export default function Feed() {
+  return (
+    <>
+      <BaseLayout>
+        <section>feed</section>
+      </BaseLayout>
+    </>
+  );
 }
