@@ -11,8 +11,11 @@ export default function Landing() {
           hiiii
         </div>
         <div className="col">
-          hello
-
+          <section className="align-center">
+            <div className="position-absolute top-50 start-50">
+              hiiii
+            </div>
+          </section>
         </div>
       </div>
     <Footer />
