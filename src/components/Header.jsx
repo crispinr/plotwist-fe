@@ -8,9 +8,7 @@ export default function Header() {
       <section className="custom-nav">
         <Navbar expand="lg">
           <Navbar.Brand className="ms-4" href="/feed">
-            <a>
-              <img src={plotwist} style={{ height: "33px" }} />
-            </a>
+            <img src={plotwist} style={{ height: "33px" }} alt="logo" />
             <span className="txt" style={{ height: "40px" }}>
               PLOTWIST
             </span>

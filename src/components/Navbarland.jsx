@@ -9,9 +9,7 @@ export default function Navbarland() {
         <Navbar expand="lg">
           <Container fluid>
             <Navbar.Brand className="d-flex ms-4" href="/">
-              <a>
-                <img src={plotwist} style={{ height: "33px" }} />
-              </a>
+              <img src={plotwist} style={{ height: "33px" }} alt="logo" />
               <span
                 className="txt align-self-center"
                 style={{ height: "40px" }}
